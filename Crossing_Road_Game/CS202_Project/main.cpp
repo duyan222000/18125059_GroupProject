@@ -3,16 +3,20 @@
 void Typing()
 {
 	int c;
+	int i = 10;
 	do {
-		c = getchar();
-		putchar(c);
+		gotoxy(i, 10);
+		++i;
+		c = _getch();
 	} while (c != '.');
 }
 
 int main()
 {
-	thread first(Typing);
 	CVehicle *CC1 = new CCar;
-	CC1->Move();
+	thread seccond(&CVehicle::Move,CC1);
+	thread first(Typing);
+	first.join();
+	seccond.join();
 	return 0;
 }
