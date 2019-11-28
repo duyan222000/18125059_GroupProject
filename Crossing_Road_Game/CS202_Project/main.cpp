@@ -1,14 +1,18 @@
-#include "Game.h"
+#include "Object.h"
 
-int main()
+void Typing()
 {
-	CVehicle *CC1 = new CCar;
-	thread first(Moving,CC1);
 	int c;
 	do {
 		c = getchar();
 		putchar(c);
 	} while (c != '.');
-	system("pause");
+}
+
+int main()
+{
+	thread first(Typing);
+	CVehicle *CC1 = new CCar;
+	CC1->Move();
 	return 0;
 }
